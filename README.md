@@ -21,6 +21,14 @@ Examples
 
 [Example #1](./examples/1/index.html)
 
+Unit testing
+============
+
+1. ```npm install```
+2. Change "debug" key from false to true in [package.json](./package.json);
+3. Rebuild: ```./gulp```
+4. ```require(['dragndrop_file_upload'], function (a) { a.unitTesting(); a.Uploader.unitTesting(); });```
+
 Issues
 ======
 
