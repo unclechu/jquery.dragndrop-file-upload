@@ -56,11 +56,11 @@
 				new DNDFileUpload({
 					dragndropArea: $('.dragndrop_area'),
 					uploadUrl: './upload.php',
-					progressCallback: function (id, progress) { // {{{1
+					progressCallback: function (id, progress) {
 						var $el = $list.find('li[data-upload-id="'+ id +'"]');
 						$el.css('width', progress + '%');
 					},
-					addFileCallback: function (err, id, fileName, fileSize, fileType) { // {{{1
+					addFileCallback: function (err, id, fileName, fileSize, fileType) {
 						if (err) {
 							console.warn(err);
 							return;
@@ -69,7 +69,7 @@
 						$list.append('<li style="width:0%;" data-upload-id="'+id+'">'+
 							fileName+' ('+fileSize+', '+fileType+')</li>');
 					},
-					endCallback: function (err, id, response) { // {{{1
+					endCallback: function (err, id, response) {
 						var $el = $list.find('li[data-upload-id="'+ id +'"]');
 
 						if (err) {
