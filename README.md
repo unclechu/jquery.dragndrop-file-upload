@@ -19,7 +19,7 @@ Usage
 Examples
 --------
 
-https://github.com/unclechu/js-amd-dragndrop_file_upload/examples/1/index.html
+[Example #1](./examples/1/index.html)
 
 Issues
 ======
@@ -39,4 +39,4 @@ Viacheslav Lotsmanov
 License
 =======
 
-[GNU/GPLv3 by Free Software Foundation](https://github.com/unclechu/js-amd-dragndrop_file_upload/blob/master/LICENSE)
+[GNU/GPLv3 by Free Software Foundation](./LICENSE)
