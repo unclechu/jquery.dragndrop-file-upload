@@ -13,6 +13,14 @@ Requirements
 - Array.prototype.map
 - Uint8Array
 
+Usage
+=====
+
+Examples
+--------
+
+https://github.com/unclechu/js-amd-dragndrop_file_upload/examples/1/index.html
+
 Issues
 ======
 
@@ -21,8 +29,7 @@ https://github.com/unclechu/js-amd-dragndrop_file_upload/issues
 TODO
 ====
 
-1. Documentation by JSDoc;
-2. Example.
+1. Documentation by JSDoc.
 
 Author
 ======

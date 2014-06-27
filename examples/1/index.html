@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>test files drag'n'drop upload</title>
+	<style>
+		body {
+			font: 16px/18px sans-serif;
+			padding: 20px;
+			background: white;
+			color: black;
+		}
+
+		ul.dragndrop_area {
+			display: block;
+			width: 640px;
+			min-height: 480px;
+			background: silver;
+			padding: 0;
+			margin: 0;
+		}
+
+		ul li {
+			display: block;
+			background: purple;
+			width: 0%;
+			height: 24px;
+			box-sizing: border-box;
+			padding-left: 7px;
+			padding-right: 7px;
+			padding-top: 3px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		ul li:nth-child(odd) { background: orange; }
+
+		ul li.error { background: red; }
+		ul li.error:nth-child(odd) { background: maroon; }
+		ul li.success { background: green; }
+		ul li.success:nth-child(odd) { background: teal; }
+	</style>
+	<script src="http://requirejs.org/docs/release/2.1.14/minified/require.js"></script>
+	<script>
+		requirejs.config({
+			paths: {
+				jquery: 'http://code.jquery.com/jquery-2.1.1.min'
+			},
+			urlArgs: 'bust=dev' + (new Date()).getTime()
+		});
+
+		require(['jquery', 'dragndrop_file_upload'], function ($, DNDFileUpload) {
+			$(function domReady() {
+				var $list = $('ul.dragndrop_area');
+
+				new DNDFileUpload({
+					dragndropArea: $('.dragndrop_area'),
+					uploadUrl: './upload.php',
+					progressCallback: function (id, progress) { // {{{1
+						var $el = $list.find('li[data-upload-id="'+ id +'"]');
+						$el.css('width', progress + '%');
+					},
+					addFileCallback: function (err, id, fileName, fileSize, fileType) { // {{{1
+						if (err) {
+							console.warn(err);
+							return;
+						}
+
+						$list.append('<li style="width:0%;" data-upload-id="'+id+'">'+
+							fileName+' ('+fileSize+', '+fileType+')</li>');
+					},
+					endCallback: function (err, id, response) { // {{{1
+						var $el = $list.find('li[data-upload-id="'+ id +'"]');
+
+						if (err) {
+							$el.addClass('error');
+							console.warn(err);
+							return;
+						}
+
+						$el.addClass('success');
+						console.log(id, response);
+					},
+					postData: {
+						action: 'upload_file'
+					},
+					uploaderInitCallback: function () {
+						var uploader = this;
+
+						uploader.extendPostData({
+							upload_id: uploader.params.id
+						});
+					}
+				}, function (err) {
+					if (err) throw err;
+				}); // new DNDFileUpload()
+			}); // domReady()
+		}); // require()
+	</script>
+</head>
+
+<body>
+	<ul class="dragndrop_area"></ul>
+</body>
+</html>
