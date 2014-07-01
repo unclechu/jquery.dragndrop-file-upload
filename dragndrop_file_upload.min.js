@@ -7,7 +7,7 @@
  * @requires HTML5 FileAPI
  * @requires XMLHttpRequest
  *
- * @version r7
+ * @version r8
  * @author Viacheslav Lotsmanov <lotsmanov89@gmail.com>
  * @license GNU/GPLv3 by Free Software Foundation (https://github.com/unclechu/js-amd-dragndrop_file_upload/blob/master/LICENSE)
  * @see {@link https://github.com/unclechu/js-useful-amd-modules/|GitHub}
