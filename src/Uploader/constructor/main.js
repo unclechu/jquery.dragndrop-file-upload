@@ -59,8 +59,8 @@ function Uploader(superclass, params, callback) { // {{{2
 
 	params = undefined;
 
-	/** @private */ self._xhr = new XMLHttpRequest();
-	/** @private */ self._reader = new FileReader();
+	/** @private */ self._xhr = new window.XMLHttpRequest();
+	/** @private */ self._reader = new window.FileReader();
 
 	/**
 	 * Progress of uploading in percents

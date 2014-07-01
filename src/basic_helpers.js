@@ -29,7 +29,7 @@ function checkForFeatures() { // {{{2
 	if (!window.FileReader) return new Uploader.exceptions.FileReaderIsNotSupported();
 	if (!window.XMLHttpRequest) return new Uploader.exceptions.XMLHttpRequestIsNotSupported();
 
-	if (!(new XMLHttpRequest()).sendAsBinary) {
+	if (!(new window.XMLHttpRequest()).sendAsBinary) {
 		if (!(Array.prototype.map instanceof Function))
 			return new Uploader.exceptions.ArrayPrototypeMapIsNotSupported();
 

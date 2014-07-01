@@ -48,7 +48,7 @@ define(['jquery'], function ($) {
 		if (!window.FileReader) return new Uploader.exceptions.FileReaderIsNotSupported();
 		if (!window.XMLHttpRequest) return new Uploader.exceptions.XMLHttpRequestIsNotSupported();
 	
-		if (!(new XMLHttpRequest()).sendAsBinary) {
+		if (!(new window.XMLHttpRequest()).sendAsBinary) {
 			if (!(Array.prototype.map instanceof Function))
 				return new Uploader.exceptions.ArrayPrototypeMapIsNotSupported();
 	
@@ -898,8 +898,8 @@ define(['jquery'], function ($) {
 	
 		params = undefined;
 	
-		/** @private */ self._xhr = new XMLHttpRequest();
-		/** @private */ self._reader = new FileReader();
+		/** @private */ self._xhr = new window.XMLHttpRequest();
+		/** @private */ self._reader = new window.FileReader();
 	
 		/**
 		 * Progress of uploading in percents
