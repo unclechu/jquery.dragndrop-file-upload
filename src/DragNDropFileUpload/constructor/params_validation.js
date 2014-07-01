@@ -1,106 +1,124 @@
 // params validation {{{3
 
-if (!('dragndropArea' in params)) {
-	self.makeError(new DragNDropFileUpload.exceptions.RequiredParam(null, 'dragndropArea'));
+paramName = 'dragndropArea';
+if (!(paramName in params)) {
+	self.makeError(new DragNDropFileUpload.exceptions.RequiredParam(null, paramName));
 	return false;
 }
-
 if (
-	!(params.dragndropArea instanceof $) &&
-	$.type(params.dragndropArea) !== 'object' &&
-	$.type(params.dragndropArea) !== 'string'
+	!(params[paramName] instanceof $) &&
+	$.type(params[paramName]) !== 'object' &&
+	$.type(params[paramName]) !== 'string'
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'dragndropArea'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
-
-if ($(params.dragndropArea).size() <= 0) {
+if ($(params[paramName]).size() <= 0) {
 	self.makeError(new DragNDropFileUpload.exceptions.DragNDropAreaBlockNotFound());
 	return false;
 }
 
-if (!('uploadUrl' in params)) {
-	self.makeError(new DragNDropFileUpload.exceptions.RequiredParam(null, 'uploadUrl'));
-	return false;
-}
-
-if ($.type(params.uploadUrl) !== 'string') {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'uploadUrl'));
-	return false;
-}
-
+paramName = 'inputFile';
 if (
-	'fileFieldName' in params &&
-	$.type(params.fileFieldName) !== 'string'
+	(paramName in params) &&
+	params[paramName] !== null &&
+	!(params[paramName] instanceof $) &&
+	$.type(params[paramName]) !== 'object' &&
+	$.type(params[paramName]) !== 'string'
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'fileFieldName'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'uploadUrl';
+if (!(paramName in params)) {
+	self.makeError(new DragNDropFileUpload.exceptions.RequiredParam(null, paramName));
+	return false;
+}
+if ($.type(params[paramName]) !== 'string') {
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
+	return false;
+}
+
+paramName = 'fileFieldName';
 if (
-	'progressCallback' in params &&
-	!(params.progressCallback instanceof Function) &&
-	params.progressCallback !== null
+	paramName in params &&
+	$.type(params[paramName]) !== 'string'
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'progressCallback'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'progressCallback';
 if (
-	'addFileCallback' in params &&
-	!(params.addFileCallback instanceof Function) &&
-	params.progressCallback !== null
+	paramName in params &&
+	!(params[paramName] instanceof Function) &&
+	params[paramName] !== null
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'addFileCallback'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'addFileCallback';
 if (
-	'endCallback' in params &&
-	!(params.endCallback instanceof Function) &&
-	params.progressCallback !== null
+	paramName in params &&
+	!(params[paramName] instanceof Function) &&
+	params[paramName] !== null
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'endCallback'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'endCallback';
 if (
-	'dragOverClass' in params &&
-	$.type(params.dragOverClass) !== 'string'
+	paramName in params &&
+	!(params[paramName] instanceof Function) &&
+	params[paramName] !== null
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'dragOverClass'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'dragOverClass';
 if (
-	'bindSuffix' in params &&
-	$.type(params.bindSuffix) !== 'string'
+	paramName in params &&
+	$.type(params[paramName]) !== 'string'
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'bindSuffix'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
+paramName = 'bindSuffix';
 if (
-	'postData' in params &&
-	$.type(params.postData) !== 'object'
+	paramName in params &&
+	$.type(params[paramName]) !== 'string'
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'postData'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 
-for (key in params.postData) {
-	if ($.type(params.postData[key]) !== 'string' && $.type(params.postData[key]) !== 'number') {
-		self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'postData'));
+paramName = 'postData';
+if (
+	paramName in params &&
+	$.type(params[paramName]) !== 'object'
+) {
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
+	return false;
+}
+for (key in params[paramName]) {
+	if ($.type(params[paramName][key]) !== 'string' && $.type(params[paramName][key]) !== 'number') {
+		self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 		return false;
 	}
 }
 
+paramName = 'uploaderInitCallback';
 if (
-	'uploaderInitCallback' in params &&
-	!(params.uploaderInitCallback instanceof Function) &&
-	params.uploaderInitCallback !== null
+	paramName in params &&
+	!(params[paramName] instanceof Function) &&
+	params[paramName] !== null
 ) {
-	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, 'uploaderInitCallback'));
+	self.makeError(new DragNDropFileUpload.exceptions.IncorrectParamValue(null, paramName));
 	return false;
 }
 

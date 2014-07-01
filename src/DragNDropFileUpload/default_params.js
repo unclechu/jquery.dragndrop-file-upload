@@ -7,20 +7,22 @@ var defaultParams = { // {{{2
 	/**
 	 * @typedef DragNDropFileUpload~params
 	 * @type {Object.<*>}
-	 * @prop {jQuery|DOM} dragndropArea
+	 * @prop {jQuery|DOM} dragndropArea - Container for drag'n'drop files
+	 * @prop {jQuery|DOM} [inputFile] - Typical <input type="file" /> for add files to upload without drag'n'drop
 	 * @prop {string} uploadUrl
 	 * @prop {string} [fileFieldName=file]
 	 * @prop {DragNDropFileUpload~progressCallback} [progressCallback]
 	 * @prop {DragNDropFileUpload~addFileCallback} [addFileCallback]
 	 * @prop {DragNDropFileUpload~endCallback} [endCallback]
-	 * @prop {string} [dragOverClass=dragndrop_over] Classname for dragndrop file is drag on the area
-	 * @prop {string} [bindSuffix=.dragndrop_file_upload] Suffix for jQuery binds
-	 * @prop {Array.<RegExp>} [mimeTypeFilter=any] Array of RegExp-s of filters by MIME-types
-	 * @prop {Object.<string|number>} [postData] Additional data to POST with file (example: { "foo": "bar", "foobar": 123 })
-	 * @prop {DragNDropFileUpload~uploaderInitCallback} [uploaderInitCallback] Callback between uploader is initialized and starting uploading
+	 * @prop {string} [dragOverClass=dragndrop_over] - Classname for dragndrop file is drag on the area
+	 * @prop {string} [bindSuffix=.dragndrop_file_upload] - Suffix for jQuery binds
+	 * @prop {Array.<RegExp>} [mimeTypeFilter=any] - Array of RegExp-s of filters by MIME-types
+	 * @prop {Object.<string|number>} [postData] - Additional data to POST with file (example: { "foo": "bar", "foobar": 123 })
+	 * @prop {DragNDropFileUpload~uploaderInitCallback} [uploaderInitCallback] - Callback between uploader is initialized and starting uploading
 	 */
 
 	dragndropArea: null,
+	inputFile: null,
 	uploadUrl: null,
 	fileFieldName: 'file',
 

@@ -26,7 +26,7 @@
 function DragNDropFileUpload(params, callback) { // {{{2
 
 	/** @private */ var self = this;
-	/** @private */ var key;
+	/** @private */ var key, paramName;
 	/** @private */ self._callback = callback;
 
 	callback = undefined;
@@ -48,6 +48,7 @@ function DragNDropFileUpload(params, callback) { // {{{2
 	params = undefined;
 
 	self.params.dragndropArea = $(self.params.dragndropArea);
+	if (self.params.inputFile) self.params.inputFile = $(self.params.inputFile);
 
 	/** @private */ self._uploaders = [];
 	/** @private */ self._lastID = 0;
