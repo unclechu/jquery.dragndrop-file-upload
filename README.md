@@ -37,7 +37,8 @@ https://github.com/unclechu/js-amd-dragndrop_file_upload/issues
 TODO
 ====
 
-1. Documentation by JSDoc.
+1. Documentation by JSDoc;
+2. Demonstration of add to upload by <input type="file"> to example.
 
 Author
 ======
