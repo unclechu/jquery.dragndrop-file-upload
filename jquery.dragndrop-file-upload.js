@@ -1064,7 +1064,7 @@
 		
 			self._xhr.open('POST', self.params.url, true);
 		
-			var boundary = 'xxxxxxxxx';
+			var boundary = '------multipartformboundary' + (new Date()).getTime();
 			self._xhr.setRequestHeader('Content-Type', 'multipart/form-data, boundary='+boundary);
 			self._xhr.setRequestHeader('Cache-Control', 'no-cache');
 			self._xhr.setRequestHeader('Pragma', 'no-cache');
