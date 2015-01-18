@@ -1,19 +1,32 @@
 /**
- * Drag'n'drop file upload module
+ * Drag'n'drop file upload jQuery plugin
  *
- * @module dragndrop_file_upload
+ * @module jquery.dragndrop-file-upload
  * @exports DragNDropFileUpload, Uploader (as DragNDropFileUpload.Uploader)
  * @requires jquery
  * @requires HTML5 FileAPI
  * @requires XMLHttpRequest
  *
- * @version r8
+ * @version 0.0.1
  * @author Viacheslav Lotsmanov <lotsmanov89@gmail.com>
- * @license GNU/GPLv3 by Free Software Foundation (https://github.com/unclechu/js-amd-dragndrop_file_upload/blob/master/LICENSE)
- * @see {@link https://github.com/unclechu/js-useful-amd-modules/|GitHub}
+ * @license GNU/AGPLv3 (https://raw.githubusercontent.com/unclechu/jquery.dragndrop-file-upload/master/LICENSE)
+ * @see {@link https://github.com/unclechu/jquery.dragndrop-file-upload|GitHub}
  */
 
-define(['jquery'], function ($) {
+(function(root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		module.exports = factory(require('jquery'));
+	} else {
+		// Global
+		root.DragNDropFileUpload = factory(jQuery);
+	}
+})(this, function($) {
+
+	'use strict';
 
 	var key; // for "for"
 
@@ -418,12 +431,13 @@ define(['jquery'], function ($) {
 				return false;
 			});
 		
-		self.params.inputFile
-			.on('change' + self.params.bindSuffix, function () {
-				addFilesToUpload(this.files);
-				this.value = ''; // reset selected files
-				return false;
-			});
+		if (self.params.inputFile)
+			self.params.inputFile
+				.on('change' + self.params.bindSuffix, function () {
+					addFilesToUpload(this.files);
+					this.value = ''; // reset selected files
+					return false;
+				});
 		
 		// handlers bind }}}3
 		
@@ -668,21 +682,22 @@ define(['jquery'], function ($) {
 	function byteValue(x) { return x.charCodeAt(0) & 0xff; }
 	
 	/**
-	 * Alternative "sendAsBinary" method if not supported native (as in Firefox)
+	 * Alternative "sendAsBinary" method if not supported native
 	 *
 	 * @private
 	 * @inner
-	 * @this {XMLHttpRequest}
+	 * @param {XMLHttpRequest} xhr
+	 * @param {string} body
 	 */
-	function sendAsBinary(body) { // {{{3
-		if (this.sendAsBinary) {
+	function sendAsBinary(xhr, body) { // {{{3
+		if (xhr.sendAsBinary) {
 			// firefox
-			this.sendAsBinary(body);
+			xhr.sendAsBinary(body);
 		} else {
 			// chrome (W3C spec.)
 			var ords = Array.prototype.map.call(body, byteValue);
 			var ui8a = new window.Uint8Array(ords);
-			this.send(ui8a);
+			xhr.send(ui8a);
 		}
 	} // sendAsBinary() }}}3
 	
@@ -1075,7 +1090,7 @@ define(['jquery'], function ($) {
 		
 			body += '--' + boundary + '--';
 		
-			sendAsBinary.call(self._xhr, body);
+			sendAsBinary(self._xhr, body);
 		
 		}; // self._reader.onload() }}}3
 		
@@ -1459,6 +1474,8 @@ define(['jquery'], function ($) {
 	 */
 	DragNDropFileUpload.Uploader = Uploader;
 
+	$.DragNDropFileUpload = DragNDropFileUpload;
+
 	return DragNDropFileUpload;
 
-}); // define()
+});

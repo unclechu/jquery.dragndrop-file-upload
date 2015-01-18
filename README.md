@@ -1,12 +1,11 @@
 Drag'n'drop File Upload
 =======================
 
-[RequireJS](http://requirejs.org/) module.
+[jQuery](http://jquery.com/) plugin.
 
 Requirements
 ============
 
-- [RequireJS](http://requirejs.org/) v2.1.11+
 - [jQuery](http://jquery.com/) v2.1+
 - HTML5 FileAPI
 - XMLHttpRequest
@@ -25,14 +24,13 @@ Unit testing
 ============
 
 1. ```npm install```
-2. Change "debug" key from false to true in [package.json](./package.json);
-3. Rebuild: ```./gulp```
-4. ```require(['dragndrop_file_upload'], function (a) { a.unitTesting(); a.Uploader.unitTesting(); });```
+2. Build with `--debug` key: ```./node_modules/.bin/gulp --debug```;
+4. ```require(['jquery.dragndrop-file-upload'], function (a) { a.unitTesting(); a.Uploader.unitTesting(); });```
 
 Issues
 ======
 
-https://github.com/unclechu/js-amd-dragndrop_file_upload/issues
+https://github.com/unclechu/jquery.dragndrop-file-upload/issues
 
 TODO
 ====
@@ -48,4 +46,4 @@ Viacheslav Lotsmanov
 License
 =======
 
-[GNU/GPLv3 by Free Software Foundation](./LICENSE)
+[GNU/AGPLv3](./LICENSE)

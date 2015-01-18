@@ -1,25 +1,32 @@
 {
-	"dependencies": {
-		"gulp": "*",
-		"gulp-clean": "*",
-		"gulp-concat": "*",
-		"gulp-preprocess": "*",
-		"gulp-jshint": "*",
-		"gulp-uglify": "*"
-	},
-	"scripts": {
-		"postinstall": "ln -s ./node_modules/.bin/gulp gulp"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/unclechu/js-amd-dragndrop_file_upload.git"
-	},
+  "devDependencies": {
+    "yargs": "^1",
+    "gulp": "^3",
+    "del": "^1",
+    "gulp-concat": "^2",
+    "gulp-preprocess": "^1",
+    "gulp-jshint": "^1",
+    "jshint-stylish": "^1",
+    "gulp-uglify": "^1"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unclechu/jquery.dragndrop-file-upload.git"
+  },
 
-	"buildFile": "./dragndrop_file_upload.js",
-	"buildFileMin": "./dragndrop_file_upload.min.js",
-	"revision": "r8",
-	"mainModule": "./src/main.js",
-	"debug": false,
-	"author": "Viacheslav Lotsmanov <lotsmanov89@gmail.com>",
-	"license": "GNU/GPLv3 by Free Software Foundation (https://github.com/unclechu/js-amd-dragndrop_file_upload/blob/master/LICENSE)"
+  "version": "0.0.1",
+  "author": "Viacheslav Lotsmanov <lotsmanov89@gmail.com>",
+  "licenses": [
+    {
+      "type": "GNU/AGPLv3",
+      "url": "https://raw.githubusercontent.com/unclechu/jquery.dragndrop-file-upload/master/LICENSE"
+    }
+  ],
+
+  "buildFile": "./jquery.dragndrop-file-upload.js",
+  "buildFileMin": "./jquery.dragndrop-file-upload.min.js",
+  "mainModule": "./src/main.js"
 }

@@ -33,6 +33,6 @@ self._reader.onload = function onAddedFileToUpload() { // {{{3
 
 	body += '--' + boundary + '--';
 
-	sendAsBinary.call(self._xhr, body);
+	sendAsBinary(self._xhr, body);
 
 }; // self._reader.onload() }}}3

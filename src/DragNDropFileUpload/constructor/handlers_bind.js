@@ -78,11 +78,12 @@ self.params.dragndropArea
 		return false;
 	});
 
-self.params.inputFile
-	.on('change' + self.params.bindSuffix, function () {
-		addFilesToUpload(this.files);
-		this.value = ''; // reset selected files
-		return false;
-	});
+if (self.params.inputFile)
+	self.params.inputFile
+		.on('change' + self.params.bindSuffix, function () {
+			addFilesToUpload(this.files);
+			this.value = ''; // reset selected files
+			return false;
+		});
 
 // handlers bind }}}3

@@ -9,21 +9,22 @@
 function byteValue(x) { return x.charCodeAt(0) & 0xff; }
 
 /**
- * Alternative "sendAsBinary" method if not supported native (as in Firefox)
+ * Alternative "sendAsBinary" method if not supported native
  *
  * @private
  * @inner
- * @this {XMLHttpRequest}
+ * @param {XMLHttpRequest} xhr
+ * @param {string} body
  */
-function sendAsBinary(body) { // {{{3
-	if (this.sendAsBinary) {
+function sendAsBinary(xhr, body) { // {{{3
+	if (xhr.sendAsBinary) {
 		// firefox
-		this.sendAsBinary(body);
+		xhr.sendAsBinary(body);
 	} else {
 		// chrome (W3C spec.)
 		var ords = Array.prototype.map.call(body, byteValue);
 		var ui8a = new window.Uint8Array(ords);
-		this.send(ui8a);
+		xhr.send(ui8a);
 	}
 } // sendAsBinary() }}}3
 
