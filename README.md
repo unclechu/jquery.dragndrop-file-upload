@@ -24,7 +24,7 @@ Unit testing
 ============
 
 1. ```npm install```
-2. Build with `--debug` key: ```./node_modules/.bin/gulp --debug```;
+2. Build with `--debug` key: ```npm run gulp -- --debug```;
 4. ```require(['jquery.dragndrop-file-upload'], function (a) { a.unitTesting(); a.Uploader.unitTesting(); });```
 
 Issues
