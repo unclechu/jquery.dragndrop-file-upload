@@ -1,4 +1,5 @@
 {
+  "name": "jquery.dragndrop-file-upload",
   "devDependencies": {
     "del": "^1.2.1",
     "gulp": "^3.9.1",
