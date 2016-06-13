@@ -10,12 +10,16 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 
+var buildFile = './jquery.dragndrop-file-upload.js';
+var buildFileMin = './jquery.dragndrop-file-upload.min.js';
+var mainModule = './src/main.js';
+
 gulp.task('clean-development', function (cb) {
-	del(pkg.buildFile, { force: true }, cb);
+	del(buildFile, { force: true }, cb);
 });
 
 gulp.task('clean-production', function (cb) {
-	del(pkg.buildFileMin, { force: true }, cb);
+	del(buildFileMin, { force: true }, cb);
 });
 
 gulp.task('clean', ['clean-development', 'clean-production']);
@@ -30,11 +34,12 @@ var preprocessContext = {
 	LICENSE: pkg.licenses[0].type +' ('+ pkg.licenses[0].url +')'
 };
 
+// adds unit tests to builds
 if (argv.debug) preprocessContext.DEBUG = true;
 
 gulp.task('build-development', ['clean-development'], function () {
-	gulp.src(pkg.mainModule)
-		.pipe(concat( pkg.buildFile ))
+	gulp.src(mainModule)
+		.pipe(concat( buildFile ))
 		.pipe(preprocess({ context: preprocessContext }))
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish))
@@ -42,8 +47,8 @@ gulp.task('build-development', ['clean-development'], function () {
 });
 
 gulp.task('build-production', ['clean-production'], function () {
-	gulp.src(pkg.mainModule)
-		.pipe(concat( pkg.buildFileMin ))
+	gulp.src(mainModule)
+		.pipe(concat( buildFileMin ))
 		.pipe(preprocess({ context: preprocessContext }))
 		.pipe(uglify({ preserveComments: 'some' }))
 		.pipe(gulp.dest('./'));
